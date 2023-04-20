@@ -1,0 +1,19 @@
+{
+  "name": "proyecto-the-movies",
+  "version": "1.0.0",
+  "description": "Proyecto SPA(Single Page Application) con conexión a una API, que tendrá un buscador de películas completamente funcional para consultar películas y mostrarlas en la aplicación web.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dev-Joshua/proyecto-the-movies.git"
+  },
+  "author": "@Dev-Joshua",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Dev-Joshua/proyecto-the-movies/issues"
+  },
+  "homepage": "https://github.com/Dev-Joshua/proyecto-the-movies#readme"
+}
