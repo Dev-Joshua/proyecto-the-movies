@@ -59,6 +59,3 @@ async function getCategoriesPreview() {
   });
   console.log(`Estatus de la solicitud: ${status}`);
 }
-
-getTrendingMoviesPreview();
-getCategoriesPreview();
