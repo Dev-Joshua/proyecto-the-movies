@@ -216,6 +216,38 @@ button {
   max-width: 150px;
 }
 
+/* Collections */
+.collectionPreview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.collectionPreview-btn {
+  border-radius: 8px;
+  height: 32px;
+  width: 72px;
+}
+.collectionPreview-movieList {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  height: 241px;
+  padding-left: 24px;
+  padding-bottom: 16px;
+}
+.collectionPreview-movieList .movie-container {
+  display: inline-block;
+  margin-right: 8px;
+}
+.collectionPreview-movieList .movie-container .movie-img {
+  height: 225px;
+  min-height: 225px;
+  max-height: 225px;
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+}
+
 /* Categories */
 .category-container {
   width: 45%;
