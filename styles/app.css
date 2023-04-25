@@ -11,11 +11,16 @@
 
   --yellow: #eecc75;
   --green: #cad297;
-  --aqua: #b7eac5;
+  --aqua: #37701db9;
   --lightBlue: #a2eee5;
-  --darkBlue: #8ea2ea;
+  --darkBlue: #ee8915;
   --red: #f09d9d;
   --dark-button: #f5eeee26;
+  --c1: #f01717b3;
+  --c2: #6b52fae7;
+  --c3: #8a1ed2df;
+  --c4: #597775;
+  --c5: #f3e525c0;
 
   --font-family-titles: "Dosis", sans-serif;
   --font-family-text: "Red Hat Display", sans-serif;
@@ -95,7 +100,6 @@ button {
 }
 .categoriesPreview-container {
   margin-top: 50px;
-  height: 20vh;
 }
 .trendingPreview-header,
 .categoriesPreview-title {
@@ -234,10 +238,10 @@ button {
   height: 8px;
 }
 #id28 {
-  --idColor: var(--yellow);
+  --idColor: var(--c1);
 }
 #id12 {
-  --idColor: var(--red);
+  --idColor: var(--aqua);
 }
 #id16 {
   --idColor: var(--green);
@@ -249,10 +253,10 @@ button {
   --idColor: var(--darkBlue);
 }
 #id99 {
-  --idColor: var(--purple-dark-1);
+  --idColor: var(--c4);
 }
 #id18 {
-  --idColor: var(--purple-medium-1);
+  --idColor: var(--c2);
 }
 #id10751 {
   --idColor: var(--yellow);
@@ -261,7 +265,7 @@ button {
   --idColor: var(--red);
 }
 #id36 {
-  --idColor: var(--green);
+  --idColor: var(--c3);
 }
 #id27 {
   --idColor: var(--lightBlue);
@@ -270,13 +274,13 @@ button {
   --idColor: var(--darkBlue);
 }
 #id9648 {
-  --idColor: var(--purple-dark-1);
+  --idColor: var(--purple-light-2);
 }
 #id10749 {
-  --idColor: var(--purple-medium-1);
+  --idColor: var(--c4);
 }
 #id878 {
-  --idColor: var(--yellow);
+  --idColor: var(--c5);
 }
 #id10770 {
   --idColor: var(--red);
@@ -285,7 +289,7 @@ button {
   --idColor: var(--green);
 }
 #id10752 {
-  --idColor: var(--lightBlue);
+  --idColor: var(--c1);
 }
 #id37 {
   --idColor: var(--darkBlue);
