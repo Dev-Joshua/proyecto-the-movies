@@ -177,6 +177,7 @@ button {
   justify-content: center;
   width: 100%;
   flex-wrap: nowrap;
+  margin: 20px 0;
 }
 .header-searchForm input {
   height: 48px;
