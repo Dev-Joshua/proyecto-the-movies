@@ -6,6 +6,7 @@ const genericSection = document.querySelector("#genericList");
 const movieDetailSection = document.querySelector("#movieDetail");
 
 /* lists & Containers */
+const carouselContainer = document.querySelector(".carousel");
 const searchForm = document.querySelector("#searchForm");
 const trendingMoviesPreviewList = document.querySelector(
   ".trendingPreview-movieList"

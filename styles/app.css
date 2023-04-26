@@ -9,6 +9,7 @@
   --purple-dark-1: #3e0f64;
   --purple-dark-2: #2a0646;
 
+  --black: #000;
   --yellow: #eecc75;
   --green: #cad297;
   --aqua: #37701db9;
@@ -71,13 +72,12 @@ h3 {
 }
 input {
   background-color: var(--purple-light-2);
-  color: var(--purple-medium-2);
   border: none;
-  font-size: 18px;
+  font-size: 16px;
   padding-left: 16px;
+  color: var(--black);
 }
 input::placeholder {
-  color: var(--purple-medium-1);
   font-family: var(--font-family-text);
 }
 button {
@@ -125,6 +125,7 @@ button {
 .header-container {
   padding-top: 40px;
 }
+/* Esta clase es una vista unicamente para la seccion movieDetails */
 .header-container--long {
   background-image: url("https://pics.filmaffinity.com/Deadpool-777527803-large.jpg");
   background: linear-gradient(
@@ -154,6 +155,12 @@ button {
   padding-bottom: 20px;
   margin-top: -30px;
 }
+.header-title--categoryView {
+  text-align: start;
+  text-align: start;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
 .header-arrow {
   font-weight: var(--font-weight-text2);
   font-size: 36px;
@@ -182,6 +189,7 @@ button {
   height: 48px;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
+  background-color: var(--purple-light-2);
 }
 
 /* Trending */
@@ -208,38 +216,6 @@ button {
   margin-right: 8px;
 }
 .trendingPreview-movieList .movie-container .movie-img {
-  height: 225px;
-  min-height: 225px;
-  max-height: 225px;
-  width: 150px;
-  min-width: 150px;
-  max-width: 150px;
-}
-
-/* Collections */
-.collectionPreview-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.collectionPreview-btn {
-  border-radius: 8px;
-  height: 32px;
-  width: 72px;
-}
-.collectionPreview-movieList {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-  height: 241px;
-  padding-left: 24px;
-  padding-bottom: 16px;
-}
-.collectionPreview-movieList .movie-container {
-  display: inline-block;
-  margin-right: 8px;
-}
-.collectionPreview-movieList .movie-container .movie-img {
   height: 225px;
   min-height: 225px;
   max-height: 225px;
@@ -358,6 +334,7 @@ button {
   width: 80%;
   margin: 0 0 16px 0;
   padding: 0;
+  color: var(--purple-dark-2);
 }
 .movieDetail-score {
   display: inline-block;
@@ -379,6 +356,7 @@ button {
 }
 .relatedMovies-title {
   margin-bottom: 16px;
+  color: var(--purple-dark-2);
 }
 .relatedMovies-scrollContainer {
   position: absolute;
@@ -399,6 +377,9 @@ button {
   height: 187.5px;
   min-height: 187.5px;
   max-height: 187.5px;
+}
+.categories-list > div h3 {
+  color: var(--purple-dark-2);
 }
 
 /* Footer */
