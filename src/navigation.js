@@ -31,6 +31,7 @@ function navigator() {
   location.hash;
 }
 
+/* Segun indique la url, navigator ejecutara estas funciones para mostrar distinto contenido mediante su #hash */
 function homePage() {
   console.log("HOME");
 
@@ -53,6 +54,7 @@ function homePage() {
 
 function categoriesPage() {
   console.log("CATEGORIES");
+  window.scroll(0, 0);
 
   headerSection.classList.remove("header-container--long");
   headerSection.style.background = "";
@@ -67,6 +69,14 @@ function categoriesPage() {
   categoriesPreviewSection.classList.add("inactive");
   genericSection.classList.remove("inactive");
   movieDetailSection.classList.add("inactive");
+
+  // Usamos split para separar ['#category', 'id-name'] de la url y meterlos en un array
+  const [_, categoryData] = location.hash.split("=");
+  const [categoryId, categoryName] = categoryData.split("-");
+
+  headerCategoryTitle.innerHTML = categoryName;
+
+  getMoviesByCategory(categoryId);
 }
 
 function movieDetailsPage() {
