@@ -28,7 +28,7 @@ function navigator() {
     homePage();
   }
 
-  location.hash;
+  window.scroll(0, 0);
 }
 
 /* Segun indique la url, navigator ejecutara estas funciones para mostrar distinto contenido mediante su #hash */
@@ -54,7 +54,6 @@ function homePage() {
 
 function categoriesPage() {
   console.log("CATEGORIES");
-  window.scroll(0, 0);
 
   headerSection.classList.remove("header-container--long");
   headerSection.style.background = "";
