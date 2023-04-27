@@ -1,5 +1,5 @@
 searchFormBtn.addEventListener("click", () => {
-  location.hash = "#search=";
+  location.hash = "#search=" + searchFormInput.value;
 });
 
 trendingBtn.addEventListener("click", () => {
@@ -104,7 +104,7 @@ function searchPage() {
   arrowBtn.classList.remove("inactive");
   arrowBtn.classList.add("header-arrow--white");
   headerTitle.classList.add("inactive");
-  headerCategoryTitle.classList.remove("inactive");
+  headerCategoryTitle.classList.add("inactive");
   carouselContainer.classList.add("inactive");
   searchForm.classList.remove("inactive");
 
@@ -112,6 +112,10 @@ function searchPage() {
   categoriesPreviewSection.classList.add("inactive");
   genericSection.classList.remove("inactive");
   movieDetailSection.classList.add("inactive");
+
+  // Uso split para convertir en un array el string de location.hash ['search', 'pelicula']
+  const [_, query] = location.hash.split("=");
+  getMoviesBySearch(query);
 }
 
 function trendsPage() {

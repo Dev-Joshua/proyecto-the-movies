@@ -311,10 +311,13 @@ button {
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 32px 24px;
+  gap: 10px;
 }
 .genericList-container .movie-container {
   display: inline-block;
   width: 47.5%;
+  border-radius: 8px;
+  box-shadow: 1px 1px 5px white;
 }
 .genericList-container .movie-img {
   width: 100%;
