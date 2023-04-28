@@ -13,10 +13,10 @@ const trendingMoviesPreviewList = document.querySelector(
 );
 const categoriesPreviewList = document.querySelector(".categoriesPreview-list");
 const movieDetailCategoriesList = document.querySelector(
-  "#categoriesPreview .categoriesPreview-list"
+  "#movieDetail .categories-list"
 );
 const relatedMoviesContainer = document.querySelector(
-  "relatedMovies-scrollContainer"
+  ".relatedMovies-scrollContainer"
 );
 
 /* Elements */
