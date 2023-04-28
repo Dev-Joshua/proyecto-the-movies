@@ -7,7 +7,8 @@ trendingBtn.addEventListener("click", () => {
 });
 
 arrowBtn.addEventListener("click", () => {
-  location.hash = "#home";
+  history.back();
+  // location.hash = "#home";
 });
 
 window.addEventListener("DOMContentLoaded", navigator, false);
@@ -28,7 +29,9 @@ function navigator() {
     homePage();
   }
 
-  window.scroll(0, 0);
+  // window.scroll(0, 0);
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
 
 /* Segun indique la url, navigator ejecutara estas funciones para mostrar distinto contenido mediante su #hash */
@@ -114,7 +117,10 @@ function searchPage() {
   movieDetailSection.classList.add("inactive");
 
   // Uso split para convertir en un array el string de location.hash ['search', 'pelicula']
-  const [_, query] = location.hash.split("=");
+  let [_, query] = location.hash.split("=");
+  query = query.replaceAll("%20", " ");
+  console.log("Buscando la pelicula: " + query);
+
   getMoviesBySearch(query);
 }
 
@@ -134,4 +140,8 @@ function trendsPage() {
   categoriesPreviewSection.classList.add("inactive");
   genericSection.classList.remove("inactive");
   movieDetailSection.classList.add("inactive");
+
+  headerCategoryTitle.innerHTML = "Tendencias";
+
+  getTrendingMovies();
 }
