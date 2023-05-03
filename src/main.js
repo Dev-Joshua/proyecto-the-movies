@@ -22,7 +22,7 @@ const lazyLoader = new IntersectionObserver((entries) => {
   });
 });
 
-function createMovies(movies, container) {
+function createMovies(movies, container, lazyLoad = false) {
   container.innerHTML = "";
 
   /* agrego contenido dinamicamente manipulando el DOM en cada elemento iterado*/
@@ -37,11 +37,13 @@ function createMovies(movies, container) {
     movieImg.classList.add("movie-img");
     movieImg.setAttribute("alt", movie.title);
     movieImg.setAttribute(
-      "data-img",
+      lazyLoad ? "data-img" : "src",
       "https://image.tmdb.org/t/p/w300/" + movie.poster_path
     );
 
-    lazyLoader.observe(movieImg);
+    if (lazyLoad) {
+      lazyLoader.observe(movieImg);
+    }
 
     movieContainer.appendChild(movieImg);
     container.appendChild(movieContainer);
@@ -78,7 +80,7 @@ async function getTrendingMoviesPreview() {
   const movies = data.results;
   // console.log({ data, movies });
 
-  createMovies(movies, trendingMoviesPreviewList);
+  createMovies(movies, trendingMoviesPreviewList, true);
 }
 
 async function getCategoriesPreview() {
@@ -98,7 +100,7 @@ async function getMoviesByCategory(id) {
   });
   const movies = data.results;
 
-  createMovies(movies, genericSection);
+  createMovies(movies, genericSection, true);
 }
 
 /* Section searchPage #search= */
