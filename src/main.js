@@ -9,6 +9,19 @@ const api = axios.create({
 });
 
 /* Utils */
+
+const lazyLoader = new IntersectionObserver((entries) => {
+  // recibo c/u de los elementos que estemos observando
+  entries.forEach((entryMovie) => {
+    // console.log(entryMovie);
+
+    if (entryMovie.isIntersecting) {
+      const url = entryMovie.target.getAttribute("data-img");
+      entryMovie.target.setAttribute("src", url);
+    }
+  });
+});
+
 function createMovies(movies, container) {
   container.innerHTML = "";
 
@@ -24,9 +37,11 @@ function createMovies(movies, container) {
     movieImg.classList.add("movie-img");
     movieImg.setAttribute("alt", movie.title);
     movieImg.setAttribute(
-      "src",
+      "data-img",
       "https://image.tmdb.org/t/p/w300/" + movie.poster_path
     );
+
+    lazyLoader.observe(movieImg);
 
     movieContainer.appendChild(movieImg);
     container.appendChild(movieContainer);
