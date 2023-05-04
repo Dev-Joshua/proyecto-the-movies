@@ -22,8 +22,15 @@ const lazyLoader = new IntersectionObserver((entries) => {
   });
 });
 
-function createMovies(movies, container, lazyLoad = false) {
-  container.innerHTML = "";
+function createMovies(
+  movies,
+  container,
+  { lazyLoad = false, clean = true } = {}
+) {
+  // clean es true? = limpiar contenedor
+  if (clean) {
+    container.innerHTML = "";
+  }
 
   /* agrego contenido dinamicamente manipulando el DOM en cada elemento iterado*/
   movies.forEach((movie) => {
@@ -40,6 +47,12 @@ function createMovies(movies, container, lazyLoad = false) {
       lazyLoad ? "data-img" : "src",
       "https://image.tmdb.org/t/p/w300/" + movie.poster_path
     );
+    movieImg.addEventListener("error", () => {
+      movieImg.setAttribute(
+        "src",
+        "https://img.freepik.com/vector-gratis/pagina-error-404-distorsion_23-2148105404.jpg"
+      );
+    });
 
     if (lazyLoad) {
       lazyLoader.observe(movieImg);
@@ -99,8 +112,32 @@ async function getMoviesByCategory(id) {
     },
   });
   const movies = data.results;
+  //maxPage se debe agregar en cada ruta que se haga infiniteScroll
+  maxPage = data.total_pages;
+  createMovies(movies, genericSection, { lazyLoad: true });
+}
 
-  createMovies(movies, genericSection, true);
+/* Clousure de navegacion */
+function getPaginatedMoviesByCategory(id) {
+  return async function () {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+
+    const scrollIsBottom = scrollTop + clientHeight >= scrollHeight - 15;
+    const pageIsNoMax = page < maxPage;
+
+    if (scrollIsBottom && pageIsNoMax) {
+      page++;
+      const { data } = await api("discover/movie", {
+        params: {
+          with_genres: id,
+          page,
+        },
+      });
+      const movies = data.results;
+
+      createMovies(movies, genericSection, { lazyLoad: true, clean: false });
+    }
+  };
 }
 
 /* Section searchPage #search= */
@@ -111,17 +148,66 @@ async function getMoviesBySearch(query) {
     },
   });
   const movies = data.results;
+  maxPage = data.total_pages;
+  console.log(maxPage);
 
   createMovies(movies, genericSection);
+}
+
+/* Clousure de navegacion */
+function getPaginatedMoviesBySearch(query) {
+  return async function () {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+
+    const scrollIsBottom = scrollTop + clientHeight >= scrollHeight - 15;
+    const pageIsNoMax = page < maxPage;
+
+    if (scrollIsBottom && pageIsNoMax) {
+      page++;
+      const { data } = await api("search/movie", {
+        params: {
+          query,
+          page,
+        },
+      });
+      const movies = data.results;
+
+      createMovies(movies, genericSection, { lazyLoad: true, clean: false });
+    }
+  };
 }
 
 /* Section trending page*/
 async function getTrendingMovies() {
   const { data } = await api("trending/movie/day");
   const movies = data.results;
+  maxPage = data.total_pages;
   // console.log({ data, movies });
+  // console.log(data.total_pages);
 
-  createMovies(movies, genericSection);
+  createMovies(movies, genericSection, { lazyLoad: true, clean: true });
+}
+
+async function getPaginatedTrendingMovies() {
+  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+
+  // si el scroll llego al final(bttom) de la aplicacion entonces llamamos la nueva api en la pagina correspondiente
+  const scrollIsBottom = scrollTop + clientHeight >= scrollHeight - 15;
+  const pageIsNoMax = page < maxPage;
+
+  /*si el scroll esta al final y la pagina no es la ultima pagina entonces:*/
+  if (scrollIsBottom && pageIsNoMax) {
+    page++;
+    const { data } = await api("trending/movie/day", {
+      params: {
+        page,
+      },
+    });
+    const movies = data.results;
+    // console.log(data);
+
+    createMovies(movies, genericSection, { lazyLoad: true, clean: false });
+  }
 }
 
 /* Section movieDetail page */

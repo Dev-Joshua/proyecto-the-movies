@@ -1,3 +1,7 @@
+let page = 1;
+let maxPage;
+let infiniteScroll;
+
 searchFormBtn.addEventListener("click", () => {
   location.hash = "#search=" + searchFormInput.value;
 });
@@ -13,9 +17,16 @@ arrowBtn.addEventListener("click", () => {
 
 window.addEventListener("DOMContentLoaded", navigator, false);
 window.addEventListener("hashchange", navigator, false);
+window.addEventListener("scroll", infiniteScroll, false);
 
 function navigator() {
   console.log({ location });
+
+  // borro el evento de scroll en cada navegacion
+  if (infiniteScroll) {
+    window.removeEventListener("scroll", infiniteScroll, { passive: false });
+    infiniteScroll = undefined;
+  }
 
   if (location.hash.startsWith("#trends")) {
     trendsPage();
@@ -32,6 +43,11 @@ function navigator() {
   // window.scroll(0, 0);
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
+
+  // Si alguna ruta le agrego una funcion al infiniteScroll lo volvemos a agregar al window
+  if (infiniteScroll) {
+    window.addEventListener("scroll", infiniteScroll, { passive: false });
+  }
 }
 
 /* Segun indique la url, navigator ejecutara estas funciones para mostrar distinto contenido mediante su #hash */
@@ -79,6 +95,8 @@ function categoriesPage() {
   headerCategoryTitle.innerHTML = categoryName;
 
   getMoviesByCategory(categoryId);
+
+  infiniteScroll = getPaginatedMoviesByCategory(categoryId);
 }
 
 function movieDetailsPage() {
@@ -121,11 +139,13 @@ function searchPage() {
   movieDetailSection.classList.add("inactive");
 
   // Uso split para convertir en un array el string de location.hash ['search', 'pelicula']
-  let [_, query] = location.hash.split("=");
-  query = query.replaceAll("%20", " ");
+  const [_, query] = location.hash.split("=");
+  // query = query.replaceAll("%20", " ");
   console.log("Buscando la pelicula: " + query);
 
   getMoviesBySearch(query);
+
+  infiniteScroll = getPaginatedMoviesBySearch(query);
 }
 
 function trendsPage() {
@@ -148,4 +168,7 @@ function trendsPage() {
   headerCategoryTitle.innerHTML = "Tendencias";
 
   getTrendingMovies();
+
+  infiniteScroll = getPaginatedTrendingMovies;
+  // console.log(infiniteScroll);
 }

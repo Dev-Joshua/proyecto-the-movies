@@ -114,7 +114,7 @@ button {
   height: 225px;
   min-height: 225px;
   max-height: 225px;
-  width: 150px;
+  width: 160px;
   min-width: 150px;
   max-width: 150px;
   margin-bottom: 15px;
@@ -139,6 +139,7 @@ button {
   flex-wrap: wrap;
 }
 .category-container--loading {
+  gap: 5px;
   background: var(--purple-light-2);
   border-radius: 8px;
   height: 25px;
@@ -351,17 +352,20 @@ button {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 32px 24px;
+  padding: 32px 16px;
   gap: 10px;
 }
 .genericList-container .movie-container {
   display: inline-block;
   width: 47.5%;
+  height: 225px;
   border-radius: 8px;
   box-shadow: 1px 1px 5px white;
 }
 .genericList-container .movie-img {
   width: 100%;
+  height: 100%;
+  min-height: 180px;
 }
 
 /* Movie Detail */
