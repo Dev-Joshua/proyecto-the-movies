@@ -5,6 +5,7 @@ const api = axios.create({
   },
   params: {
     api_key: API_KEY,
+    language: navigator.language || "es-CO",
   },
 });
 
@@ -13,8 +14,6 @@ const api = axios.create({
 const lazyLoader = new IntersectionObserver((entries) => {
   // recibo c/u de los elementos que estemos observando
   entries.forEach((entryMovie) => {
-    // console.log(entryMovie);
-
     if (entryMovie.isIntersecting) {
       const url = entryMovie.target.getAttribute("data-img");
       entryMovie.target.setAttribute("src", url);
@@ -93,7 +92,7 @@ async function getTrendingMoviesPreview() {
   const movies = data.results;
   // console.log({ data, movies });
 
-  createMovies(movies, trendingMoviesPreviewList, true);
+  createMovies(movies, trendingMoviesPreviewList, { lazyLoad: true });
 }
 
 async function getCategoriesPreview() {
@@ -151,7 +150,7 @@ async function getMoviesBySearch(query) {
   maxPage = data.total_pages;
   console.log(maxPage);
 
-  createMovies(movies, genericSection);
+  createMovies(movies, genericSection, { lazyLoad: true });
 }
 
 /* Clousure de navegacion */

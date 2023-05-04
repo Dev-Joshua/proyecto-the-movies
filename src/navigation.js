@@ -3,7 +3,7 @@ let maxPage;
 let infiniteScroll;
 
 searchFormBtn.addEventListener("click", () => {
-  location.hash = "#search=" + searchFormInput.value;
+  location.hash = "#search=" + searchFormInput.value.trim();
 });
 
 trendingBtn.addEventListener("click", () => {
@@ -91,8 +91,9 @@ function categoriesPage() {
   // Usamos split para separar ['#category', 'id-name'] de la url y meterlos en un array
   const [_, categoryData] = location.hash.split("=");
   const [categoryId, categoryName] = categoryData.split("-");
+  const recodeName = decodeURI(categoryName);
 
-  headerCategoryTitle.innerHTML = categoryName;
+  headerCategoryTitle.innerHTML = recodeName;
 
   getMoviesByCategory(categoryId);
 
@@ -140,10 +141,10 @@ function searchPage() {
 
   // Uso split para convertir en un array el string de location.hash ['search', 'pelicula']
   const [_, query] = location.hash.split("=");
-  // query = query.replaceAll("%20", " ");
-  console.log("Buscando la pelicula: " + query);
+  // console.log(query.replace(/%20/g, " "));
+  console.log("Buscando la pelicula: " + decodeURI(query));
 
-  getMoviesBySearch(query);
+  getMoviesBySearch(decodeURI(query));
 
   infiniteScroll = getPaginatedMoviesBySearch(query);
 }
