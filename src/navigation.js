@@ -48,6 +48,7 @@ function navigator() {
   if (infiniteScroll) {
     window.addEventListener("scroll", infiniteScroll, { passive: false });
   }
+  page = 1;
 }
 
 /* Segun indique la url, navigator ejecutara estas funciones para mostrar distinto contenido mediante su #hash */

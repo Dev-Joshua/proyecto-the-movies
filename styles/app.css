@@ -90,7 +90,6 @@ button {
 }
 
 /* Shared */
-.header-container,
 .trendingPreview-header,
 .categoriesPreview-container {
   padding: 0 24px;
@@ -159,6 +158,7 @@ button {
 .header-container {
   padding-top: 40px;
 }
+
 /* Esta clase es una vista unicamente para la seccion movieDetails */
 .header-container--long {
   background-image: url("https://pics.filmaffinity.com/Deadpool-777527803-large.jpg");
@@ -193,7 +193,9 @@ button {
   text-align: start;
   text-align: start;
   letter-spacing: 0.5px;
-  margin: 0;
+  margin-left: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .header-arrow {
   font-weight: var(--font-weight-text2);
@@ -203,6 +205,7 @@ button {
   display: inline-block;
 }
 .header-arrow--white {
+  margin-left: 20px;
   color: var(--purple-light-1);
 }
 .header-searchForm {
@@ -212,6 +215,7 @@ button {
   width: 100%;
   flex-wrap: nowrap;
   margin: 20px 0;
+  padding: 0 24px;
 }
 .header-searchForm input {
   height: 48px;
@@ -225,6 +229,13 @@ button {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   background-color: var(--purple-light-2);
+}
+.carousel {
+  margin-top: 50px;
+}
+.carousel-item img {
+  height: auto;
+  object-fit: contain;
 }
 
 /* Trending */
@@ -269,7 +280,7 @@ button {
 
 /* Categories */
 .category-container {
-  width: 45%;
+  width: 42%;
 }
 .category-title {
   margin-bottom: 8px;
@@ -455,5 +466,160 @@ footer {
   }
   50% {
     opacity: 0;
+  }
+}
+
+@media (min-width: 425px) {
+  .category-container {
+    width: 36%;
+  }
+  .genericList-container {
+    justify-content: space-around;
+  }
+  .genericList-container .movie-container {
+    height: 280px;
+    width: 45%;
+  }
+}
+
+@media (min-width: 500px) {
+  .header-title {
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  .category-container {
+    width: 30%;
+  }
+
+  .genericList-container .movie-container {
+    height: 350px;
+    width: 45%;
+  }
+}
+
+@media (min-width: 625px) {
+  .carousel-item img {
+    opacity: 0.7;
+    height: 50%;
+  }
+  .header-title {
+    margin-top: 5px;
+  }
+  h2 {
+    font-size: 25px;
+  }
+  .header-searchForm {
+    margin: 50px 0;
+  }
+  .trendingPreview-movieList {
+    height: 290px;
+  }
+  .trendingPreview-movieList .movie-container {
+    margin-right: 12px;
+  }
+  .trendingPreview-movieList .movie-container .movie-img {
+    height: 290px;
+    min-height: 290px;
+    max-height: 290px;
+    width: 190px;
+    min-width: 190px;
+    max-width: 190px;
+  }
+  .categoriesPreview-list {
+    gap: 5px;
+  }
+  .genericList-container {
+    gap: 20px;
+  }
+  .genericList-container .movie-container {
+    height: 420px;
+    width: 45%;
+  }
+  .category-container {
+    width: 26%;
+  }
+  .movieDetail-title {
+    font-size: 30px;
+  }
+  .relatedMovies-title {
+    font-size: 22px;
+  }
+  .categories-list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  footer {
+    margin-top: 60px;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .header-title {
+    font-size: 35px;
+  }
+  .header-searchForm input {
+    width: 70%;
+  }
+  .carousel-item img {
+    height: 55vh;
+    object-fit: fill;
+    padding: 0 20px;
+  }
+  .genericList-container {
+    /* display: block;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap; */
+    height: 290px;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    margin-top: 50px;
+  }
+  .genericList-container .movie-container {
+    display: inline-block;
+    margin-right: 8px;
+    height: 250px;
+    width: auto;
+  }
+  .genericList-container .movie-img {
+    width: 160px;
+    min-width: 160px;
+    max-width: 160px;
+    object-fit: cover;
+  }
+  .header-container--long {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.35) 19.27%,
+        rgba(0, 0, 0, 0) 29.17%
+      ),
+      url(https://image.tmdb.org/t/p/w500/voAxRv011XHK2qFBXmZKXPj2wWB.jpg);
+    background-size: auto !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+}
+
+@media (min-width: 920px) {
+  .header-title {
+    font-size: 40px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  .carousel-item img {
+    height: 55vh;
+    object-fit: contain;
+  }
+  .category-container {
+    width: 16%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .category-container {
+    width: 10%;
   }
 }
